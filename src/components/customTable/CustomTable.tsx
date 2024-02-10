@@ -1,7 +1,6 @@
 import React from 'react';
 import {Container, Stack} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import {faBitcoin} from "@fortawesome/free-brands-svg-icons";
 
 const fontStyle = {

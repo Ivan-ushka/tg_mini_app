@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const CreateAssetPage = () => {
     return (
         <Container className="d-flex justify-content-end text-center flex-column">
-            <h1 className="border-bottom"> Add asset </h1>
+            <h1 className='rounded-1 text-light shadow p-2' style={{fontWeight: 600}}>Add asset</h1>
             <AssetForm />
             <Container className='d-flex justify-content-end'>
                <Link to="/"> <Button> Back </Button></Link>

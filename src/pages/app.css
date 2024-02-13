@@ -1,0 +1,13 @@
+.app{
+    background: linear-gradient(-45deg, #190f4b, #e12d91);
+    font-family: Plus Jakarta Sans, serif;
+    font-size: 12px !important;
+    height: 100vh;
+}
+span{
+    font-size: 12px !important;
+}
+p,h1,h2,h3,h4,h5,h6,div {
+    margin: 0;
+    padding: 0;
+}

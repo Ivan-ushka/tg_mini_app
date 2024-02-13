@@ -1,12 +1,14 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
 import MainRouter from "./MainRouter";
+import './app.css'
+
 
 function App() {
     return (
-        <div className="bg-light py-2" style={{height: "1000px"}}>
-            <Container >
-                <MainRouter />
+        <div className="app py-2">
+            <Container>
+                <MainRouter/>
             </Container>
         </div>
     );

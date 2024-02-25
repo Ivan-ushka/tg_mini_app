@@ -1,8 +1,11 @@
 .app{
-    background: linear-gradient(-45deg, #190f4b, #e12d91);
+    background:  #f4ebdb;
     font-family: Plus Jakarta Sans, serif;
     font-size: 12px !important;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 span{
     font-size: 12px !important;

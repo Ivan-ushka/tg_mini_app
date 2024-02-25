@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import CreateAssetPage from "../components/createAssetForm/CreateAssetPage";
+import CreateAssetPage from "./CreateAssetPage";
 import Home from "./Home";
 
 const MainRouter = () => {

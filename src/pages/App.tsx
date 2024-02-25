@@ -1,15 +1,19 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
 import MainRouter from "./MainRouter";
 import './app.css'
+import {Provider} from "react-redux";
+import {store} from "../state/store";
+import Header from "../components/Header";
+
 
 
 function App() {
     return (
-        <div className="app py-2">
-            <Container>
+        <div className="app">
+            <Provider store={store}>
+                <Header />
                 <MainRouter/>
-            </Container>
+            </Provider>
         </div>
     );
 }

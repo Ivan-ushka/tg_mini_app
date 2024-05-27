@@ -1,19 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {Container, Image} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../state/store';
 import {fetchAsset} from '../../state/assetActions';
 import LoadingSpinner from "../../components/LoadingSpinner";
-import ErrorComponent from "../../components/ErrorComponent";
+import ErrorComponent from "../../errorComponents/ErrorComponent";
 import PrintAssets from "./PrintAssets";
 import {fetchTickers} from "../../state/tickersActions";
 import Footer from "../../components/Footer";
-import ErrorMessage from "../../components/ErrorMessage";
+import ErrorDefaultMessage from "../../errorComponents/ErrorDefaultMessage";
 import withArrayValidation from "../../components/withArrayValidation";
-import rectangle from '../../Untitled.svg'
-import OIG2 from '../../OIG2.jpg'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFaceSmileWink} from "@fortawesome/free-regular-svg-icons";
+import ProfileInfo from "./ProfileInfo";
+import ErrorNotTelegramUser from "../../errorComponents/ErrorNotTelegramUser";
 
 interface TelegramUser {
     id: number;
@@ -22,6 +20,7 @@ interface TelegramUser {
     username?: string;
     photo_url?: string;
 }
+
 const Home: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
     const assets = useSelector((state: RootState) => state.asset.listAssets);
@@ -35,8 +34,14 @@ const Home: React.FC = () => {
         // Проверка наличия объекта Telegram WebApp
         if (window.Telegram.WebApp.initDataUnsafe) {
             const userData = window.Telegram.WebApp.initDataUnsafe.user;
-            // @ts-ignore
-            setUser(userData);
+            if (userData) {
+                setUser({
+                    id: userData.id,
+                    first_name: userData.first_name,
+                    last_name: userData.last_name,
+                    username: userData.username,
+                });
+            }
         }
     }, []);
 
@@ -46,13 +51,11 @@ const Home: React.FC = () => {
     }, [dispatch]);
 
     if (error) {
-        return (
-            <ErrorComponent error={error} previousAssets={previousAssetData}/>
-        );
+        return <ErrorComponent error={error} previousAssets={previousAssetData}/>
     }
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <ErrorNotTelegramUser/>;
     }
 
     const PrintAssetsWithArrayValidation = withArrayValidation(PrintAssets);
@@ -60,37 +63,11 @@ const Home: React.FC = () => {
     return (
         <div>
             <Container className="mt-4 px-4">
-                <h5 style={{fontWeight: '600'}}>{user.first_name} {user.last_name}</h5>
-                <p>Welcome back! 👋</p>
+                <h5 className="text-primary-dark text-bold">{user.first_name} {user.last_name}</h5>
+                <p> Welcome back! 👋</p>
             </Container>
-            <Container className="d-flex flex-column justify-content-end text-center mt-4"
-                       style={{marginBottom: '140px'}}>
-                {/* <h1 className="rounded-1 shadow bg-primary text-white p-2" style={{fontWeight: 600}}>
-                    Cryptocurrency
-                </h1>*/}
-
-
-                <div className="d-flex justify-content-center align-items-center" style={{marginTop: "10px"}}>
-                    <div className="d-flex flex-column justify-content-center align-items-center" style={{
-                        backgroundImage: `url(${rectangle})`,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        minHeight: '170px',
-                        minWidth: '304px',
-                    }}>
-                        <Image className="z-0 rounded-4 border-5 border border-light" src={OIG2} alt="robot"
-                               width="50px" height="50px" style={{marginTop: "-65px"}}></Image>
-                        <p className="text-white-50 mt-3 mb-1">Current balance:</p>
-                        <h3 className="text-white">$145,430.43</h3>
-                        <div style={{fontSize: '1.1em'}} className="text-light d-flex">Weekly profit
-                            <div style={{fontSize: '0.7em'}} className="bg-primary-subtle text-primary rounded-2 px-1 mx-1 align-content-center text-center">+2.35%</div>
-                        </div>
-                    </div>
-
-                </div>
-
-
+            <Container className="d-flex flex-column justify-content-end text-center mt-4 mb-6" >
+                <ProfileInfo/>
                 {loading ? (
                     <>
                         <PrintAssetsWithArrayValidation assets={assets}></PrintAssetsWithArrayValidation>

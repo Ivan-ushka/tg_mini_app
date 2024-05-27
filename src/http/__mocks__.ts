@@ -5,7 +5,7 @@ const mock = new MockAdapter($api);
 
 mock.onGet(`/assets/?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve`).reply(200, {
     message: [
-        {
+        /*{
             id: 0,
             currency: 'USD',
             total_sum: 100,
@@ -100,7 +100,7 @@ mock.onGet(`/assets/?data_check_string=erfvd&telegram_user_id=1&received_hash=er
             transaction_date: '2024-05-24',
             created_at: '2024-05-24',
             updated_at: '2024-05-24',
-        },
+        },*/
     ],
 
 });

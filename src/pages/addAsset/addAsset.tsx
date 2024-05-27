@@ -12,7 +12,7 @@ const AddAsset = () => {
 
     return (
         <Container className="d-flex justify-content-end text-center flex-column my-4">
-            <h1 className='rounded-1 shadow bg-primary text-white p-2' style={{fontWeight: 600}}>Add asset</h1>
+            <h1 className='rounded-1 shadow bg-primary text-white p-2 text-bold'>Add asset</h1>
             <AssetForm />
         </Container>
     );

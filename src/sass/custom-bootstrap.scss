@@ -14,3 +14,103 @@
   background-color: #2c4a52;
   border-color: #2c4a52;
 }
+
+.text-primary-dark{
+  color: #091e4a;
+}
+
+.rectangle-img-bg{
+  background-image: url('../assets/images/rectangle.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 170px;
+  min-width: 304px;
+}
+
+.text-bold{
+  font-weight: 700;
+}
+
+.ms-6 {
+  margin-left: ($spacer * 6) !important;
+}
+
+.me-6 {
+  margin-right: ($spacer * 6) !important;
+}
+
+.mt-6 {
+  margin-top: ($spacer * 6) !important;
+}
+
+.mb-6 {
+  margin-bottom: ($spacer * 6) !important;
+}
+
+.mx-6 {
+  margin-right: ($spacer * 6) !important;
+  margin-left: ($spacer * 6) !important;
+}
+
+.my-6 {
+  margin-top: ($spacer * 6) !important;
+  margin-bottom: ($spacer * 6) !important;
+}
+
+.m-6 {
+  margin: ($spacer * 6) !important;
+}
+
+.ms-7 {
+  margin-left: ($spacer * 9) !important;
+}
+
+.me-7 {
+  margin-right: ($spacer * 9) !important;
+}
+
+.mt-7 {
+  margin-top: ($spacer * 9) !important;
+}
+
+.mb-7 {
+  margin-bottom: ($spacer * 9) !important;
+}
+
+.mx-7 {
+  margin-left: ($spacer * 9) !important;
+  margin-right: ($spacer * 9) !important;
+
+}
+
+.my-7 {
+  margin-top: ($spacer * 9) !important;
+  margin-bottom: ($spacer * 9) !important;
+}
+
+.m-7 {
+  margin: ($spacer * 9) !important;
+}
+
+//fontSize
+.fs-1{
+  font-size: ($spacer * 0.8) !important;
+}
+
+.fs-2{
+  font-size: ($spacer * 0.9) !important
+}
+
+.fs-3{
+  font-size: ($spacer * 1.2) !important
+}
+
+.fs-4{
+  font-size: ($spacer * 1.4) !important
+}
+
+.fs-5{
+  font-size: ($spacer * 1.5) !important
+}
+

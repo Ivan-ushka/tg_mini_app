@@ -1,6 +1,6 @@
 import React from 'react';
 import {getAsset} from "../interfaces/asset";
-import AssetCard from "./AssetCard";
+import AssetCard from "../components/AssetCard";
 
 interface ErrorComponentProps {
     error: string;

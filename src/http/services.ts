@@ -9,11 +9,11 @@ const requestOptions = {
 };
 export default class Service{
     static async createAsset(data: Asset) {
-        return $api.post('/assets?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve', data, requestOptions)
+        return $api.post('/asset?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve', data)
     }
 
     static async getListAssets() {
-        return $api.get('/assets/?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve', requestOptions)
+        return $api.get('/assets/?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve')
     }
 
     static async getCurrencies() {
@@ -21,7 +21,7 @@ export default class Service{
     }
 
     static async getTickers() {
-        return $api.get('/tickers?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve', requestOptions)
+        return $api.get('/tickers/?data_check_string=erfvd&telegram_user_id=1&received_hash=erfve', requestOptions)
     }
 
 

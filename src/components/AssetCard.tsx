@@ -13,13 +13,13 @@ interface MyComponentProps {
 const AssetCard: React.FC<MyComponentProps> = ({data}) => {
     let bg;
     if (Number(data.daily_pnl) > 0) {
-        bg = 'text-success mb-0';
+        bg = 'text-primary mb-0';
     } else {
         bg = 'text-danger mb-0';
     }
     return (
-        <Container className="d-flex bg-white shadow-sm rounded-1 my-2 py-1" >
-            <Stack className="d-flex flex-row text-start ms-5">
+        <Container className="d-flex bg-white shadow-sm rounded-3 my-2 py-1" >
+            <Stack className="d-flex flex-row text-start ms-3 ms-md-5">
                 <FontAwesomeIcon icon={faBitcoin} className="mt-1"/>
                 <Container className="" >
                     <h6>{data.name}</h6>

@@ -1,8 +1,7 @@
 .app{
-    background:  #f4ebdb;
+    background:  #f5f8ff;
+    min-height: 100vh;
     font-family: Plus Jakarta Sans, serif;
-    font-size: 12px !important;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;

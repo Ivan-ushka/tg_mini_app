@@ -1,17 +1,17 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import CreateAssetPage from "./CreateAssetPage";
-import Home from "./Home";
+import AddAsset from "../pages/addAsset/addAsset";
+import Home from "../pages/home/Home";
 
-const MainRouter = () => {
+const AppRouter = () => {
     return (
         <>
             <Routes>
                 <Route path="/" element={<Home />}/>
-                <Route path="/create_asset" element={<CreateAssetPage />}/>
+                <Route path="/create_asset" element={<AddAsset />}/>
             </Routes>
         </>
     );
 };
 
-export default MainRouter;
+export default AppRouter;

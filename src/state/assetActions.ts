@@ -7,7 +7,7 @@ export const fetchAsset = (): AppThunk => async (dispatch) => {
     try {
         dispatch(fetchAssetStart());
         const response = await Service.getListAssets();
-        dispatch(fetchAssetSuccess(response.data.messages));
+        dispatch(fetchAssetSuccess(response.data.message));
     } catch (error: any) {
         dispatch(fetchAssetFailure(error.message));
     }

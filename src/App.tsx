@@ -1,18 +1,19 @@
-import React from 'react';
-import MainRouter from "./MainRouter";
+import React, {useEffect} from 'react';
+import AppRouter from "./components/AppRouter";
 import './app.css'
 import {Provider} from "react-redux";
-import {store} from "../state/store";
-import Header from "../components/Header";
-
+import {store} from "./state/store";
 
 
 function App() {
+    useEffect(() => {
+        Telegram.WebApp.ready();
+    }, []);
+
     return (
         <div className="app">
             <Provider store={store}>
-                <Header />
-                <MainRouter/>
+                <AppRouter/>
             </Provider>
         </div>
     );

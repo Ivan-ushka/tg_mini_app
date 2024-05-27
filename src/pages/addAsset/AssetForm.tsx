@@ -1,10 +1,10 @@
 import React, {useState, ChangeEvent, FormEvent} from 'react';
 import {Button, Container, Form, InputGroup} from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
-import Service from "../http/services";
-import Asset from "../interfaces/asset";
+import Service from "../../http/services";
+import Asset from "../../interfaces/asset";
 import {useSelector} from "react-redux";
-import {RootState} from "../state/store";
+import {RootState} from "../../state/store";
+import {Link} from "react-router-dom";
 
 const AssetForm = () => {
     const tickers = useSelector((state: RootState) => state.tickers.tickers);
@@ -16,6 +16,10 @@ const AssetForm = () => {
         currency: "USD",
         transaction_date: new Date().toISOString(),
     });
+
+    /* useEffect(() => {
+        if(!data.number && data.price && data.total_price) setData({...data, number:  (data.total_price / data.price)})
+     }, [data])*/
 
     const [validated, setValidated] = useState(false);
 
@@ -45,30 +49,27 @@ const AssetForm = () => {
     };
 
     return (
-        <Form noValidate validated={validated} onSubmit={handleSubmit} className="my-1">
-
-            <InputGroup className="my-1" size="sm">
-                <Dropdown>
-                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                        Assets
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu style={{ maxHeight: '200px', overflowY: 'auto' }}>
-                        {
-                            tickers.map((item, index) => index < 10 && <Dropdown.Item href="#">{item}</Dropdown.Item>)
-                        }
-                    </Dropdown.Menu>
-                </Dropdown>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}
+              className="my-1 d-flex flex-column text-start ">
+            <Form.Label htmlFor="Asset name" className='mx-1'>Asset name</Form.Label>
+            <Form.Group>
                 <Form.Control
                     placeholder="Asset name"
                     aria-label="Asset name"
                     name="name"
                     value={data.name}
                     onChange={handleInputChange}
+                    list="assetsName"
                 />
-                <InputGroup.Text style={{width: '7rem'}}>Asset name</InputGroup.Text>
-            </InputGroup>
+                <datalist id="assetsName">
+                    {tickers.map((item, index) => (
+                        <option key={index} value={item}/>
+                    ))}
+                </datalist>
+            </Form.Group>
 
-            <InputGroup className="my-1" size="sm">
+            <Form.Label htmlFor="Number of assets" className='mx-1'>Number of assets</Form.Label>
+            <InputGroup className="mb-2">
                 <Form.Control
                     type="number"
                     placeholder="Number of assets"
@@ -77,10 +78,10 @@ const AssetForm = () => {
                     value={data.number}
                     onChange={handleInputChange}
                 />
-                <InputGroup.Text style={{width: '7rem'}}>Number of assets</InputGroup.Text>
             </InputGroup>
 
-            <InputGroup className="my-1" size="sm">
+            <Form.Label htmlFor="Price per coin" className='mb-0 mx-1'>Price per coin</Form.Label>
+            <InputGroup className="mb-2">
                 <Form.Control
                     type="number"
                     placeholder="Price per coin"
@@ -89,10 +90,10 @@ const AssetForm = () => {
                     value={data.price}
                     onChange={handleInputChange}
                 />
-                <InputGroup.Text style={{width: '7rem'}}>Price per coin</InputGroup.Text>
             </InputGroup>
 
-            <InputGroup className="my-1" size="sm">
+            <Form.Label htmlFor="Total price" className='mb-0 mx-1'>Total price</Form.Label>
+            <InputGroup className="mb-2">
                 <Form.Control
                     type="number"
                     placeholder="Total price"
@@ -101,12 +102,14 @@ const AssetForm = () => {
                     value={data.total_price}
                     onChange={handleInputChange}
                 />
-                <InputGroup.Text style={{width: '7rem'}}>Total price</InputGroup.Text>
             </InputGroup>
 
-            <Container className="d-flex justify-content-end">
-                <Button className="custom-button" type="submit"> Submit </Button>
-            </Container>
+            <div className="d-flex bg-white justify-content-center fixed-bottom pt-2 pb-5">
+                <Link to="/">
+                    <Button size="lg" className="me-5 primary"> Back </Button>
+                </Link>
+                <Button size="lg" className="primary" type="submit"> Submit </Button>
+            </div>
         </Form>
     );
 };
